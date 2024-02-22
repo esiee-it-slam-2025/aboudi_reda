@@ -12,6 +12,7 @@ if total > 20:
     print("Résultat énorme")
 else : 
     print ("Résultat pas ouf")
+    czgcygzcgzgc
 
 
 
