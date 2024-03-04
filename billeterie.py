@@ -109,5 +109,5 @@ if depart_index < arrivee_index:
 elif depart_index > arrivee_index:  
     print("\nVeuillez emprunter la voie 2.")
 else:
-    print("\nmdr bah t'es déja dans ta gare.")
+    print("\nVous êtes déjà à destination.")
 
