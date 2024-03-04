@@ -34,5 +34,11 @@ print("Bienvenue dans la liste de courses.\n")
 print("Que voulez vous faire ?")
 show_actions()
 
+choix_chiffre = input("Quel est votre choix ?")
+if choix_chiffre == 1:
+    ajoute_course
+
+print("Merci")
+
 
 print("A bientot")
