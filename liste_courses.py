@@ -9,7 +9,14 @@ liste_course = {
     "parmesan": 1
 }
 
-# Fonctions
+# Fonctions L'utilisateur peut ajouter des articles à sa liste
+
+def  ajoute_course():
+    article = input("Quel article voulez-vous ajouter à votre liste ?")
+    quantite = input("Combien voulez-vous en ajouter ?")
+    liste_course[article] = quantite
+    print ("Vous avez ajouté (quantite)(article) à votre liste de course")
+
 
 
 def show_actions():
