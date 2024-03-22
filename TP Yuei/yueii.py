@@ -89,8 +89,15 @@ def intro():
 
     prenom = input("Quel est ton prénom ? ")
     personnage["prénom"] = prenom
-    age = input("Quel âge as-tu ? ")
+    age = int(input("Quel âge as-tu ? "))  # Convertir l'entrée en entier
+    if age < 13:  # Ajouter les deux-points ici
+        print("Désolé, tu ne peux pas encore t'inscrire à Yueii, Reviens dans quelques années futur héro.")
+    elif age > 26:
+        print("Vous êtes trop vieux pour vous inscrire au sein de l'établissement Yueii")
+        return  # Arrêter la création du personnage
     personnage["Age"] = age
+
+
 
 
     # Afficher la liste des pouvoirs disponibles avec leur position dans la liste
@@ -134,7 +141,7 @@ def lieu_hall():
             break
         elif reponse.lower() == "2" or reponse.lower() == "observer":
             observer()
-            if random.random() < 0.9:  # Probabilité de 70% de trouver un objet spécial
+            if random.random() < 0.9:  # Probabilité de 90% de trouver un objet spécial
                 recuperer_objet_special()
         elif reponse.lower() == "3" or reponse.lower() == "aller dans la classe 1-a":
             lieu_classe_1a()
@@ -154,11 +161,15 @@ def observer():
     else:
         print("Réponse invalide. Veuillez répondre 'Oui' ou 'Non'.")
 
+a_parle_a_orihime = False  # Ajoutez cette variable globale
+
 def parler_a_fille():
+    global a_parle_a_orihime  # Ajoutez cette ligne pour accéder à la variable globale
     print("Vous: Bonjour, je suis", personnage["prénom"], "Comment tu t'appelles?")
     print("Fille: Bonjour", personnage["prénom"], "Je m'appelle Orihime. Tu viens d'intégrer l'école ?")
     reponse = input("├─> ").lower()
     if reponse == "oui":
+        a_parle_a_orihime = True  # Met à jour la variable pour indiquer que le joueur a parlé à Orihime
         parler_a_fille1(personnage["PV"])  # Passer player_pv en argument
     elif reponse == "non":
         print("Orihime vous regarde bizarrement")
@@ -166,18 +177,23 @@ def parler_a_fille():
         print("Réponse invalide. Veuillez répondre 'Oui' ou 'Non'.")
 
 def parler_a_fille1(player_pv):  # Utilisation de player pour jouer sur la vie du perso
-    print("Vous: Enchanté, Orihime. Pourrais-tu m'indiquer la salle de classe 1-A ?")
-    print("Orihime: Pardon ? Tu fais partie de cette classe.... ?")
-    print("oui/non")
-    reponse = input("├─> ").lower()
+    global a_parle_a_orihime  # Ajoutez cette ligne pour accéder à la variable globale
+    if a_parle_a_orihime:  # Vérifie si le joueur a parlé à Orihime au rez-de-chaussée
+        print("Vous: Enchanté, Orihime. Pourrais-tu m'indiquer la salle de classe 1-A ?")
+        print("Orihime: Pardon ? Tu fais partie de cette classe.... ?")
+        print("oui/non")
+        reponse = input("├─> ").lower()
 
-    if reponse == "oui":
-        player_pv = la_gifle(player_pv)
-    elif reponse == "non":
-        print("Mmmmh, rattrape-toi")
+        if reponse == "oui":
+            player_pv = la_gifle(player_pv)
+        elif reponse == "non":
+            print("Mmmmh, rattrape-toi")
+        else:
+            print("Réponse invalide. Veuillez répondre 'Oui' ou 'Non'.")
+        return player_pv
     else:
-        print("Réponse invalide. Veuillez répondre 'Oui' ou 'Non'.")
-    return player_pv
+        print("Orihime ne vous reconnaît pas. Vous devriez peut-être lui parler au rez-de-chaussée d'abord.")
+
 
 def la_gifle(player_pv): # Le joueur perd 10pv avec cette fonction
     print("Orihime s'enfuit et vous bouscule viollement, vous perdez 10 points de vie.")
@@ -324,8 +340,9 @@ def lieu_couloir_1er_etage():
                 print("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
                 print("\nC'est le couloir du premier étage.")
                 print("Orihime vous remarque et s'approche de vous...")
-                print("Orihime: Ah, c'est toi,", personnage["prénom"], ".")
-                print("Orihime: Laisse-moi tranquille.")
+                print("Orihime: Encore toi !! ", personnage["prénom"],...)
+                time.sleep(1)
+                print("Laisse-moi tranquille.")
                 print("1. D'accord, je ne voulais pas te déranger.")
                 print("2. Pourquoi cet accueil glacial ?")
                 choix = input("├─> ")
@@ -390,7 +407,16 @@ def lieu_tambola():
             jouer_jeu_tambola()
         elif reponse.lower() == "2" or reponse.lower() == "quitter la tambola":
             print("Vous quittez la tambola.")
-            break
+        print("┌────────────────────────────────────────")
+        proposer_actions(["Sortir dans le couloir", "Aller à la salle d'entraînement", "Manger"])
+        reponse = input("├─> ").lower()
+        print("└────────────────────────────────────────")
+        if reponse.lower() == "1" or reponse.lower() == "sortir dans le couloir":
+            lieu_couloir_1er_etage()
+        elif reponse.lower() == "2" or reponse.lower() == "aller à la salle d'entraînement":
+            lieu_salle_entrainement()
+        elif reponse.lower() == "3" or reponse.lower() == "manger":
+            manger()
 
 def jouer_jeu_tambola():
     global argent
@@ -467,8 +493,8 @@ def manger():
             print(f"Vous avez choisi de manger {plat_demande}.")
             plats_stock[plat_demande] -= 1
             argent -= prix_repas  # Déduire le prix du repas de l'argent du joueur
-            personnage["PV"] += 10
-            print("Vous avez récupéré 10 points de vie.")
+            personnage["PV"] += 30
+            print("Vous avez récupéré 30 points de vie.")
             print(f"Il vous reste {argent} yen.")
         else:
             print("Désolé, vous n'avez pas assez d'argent pour acheter ce plat.")
@@ -555,7 +581,7 @@ def combattre():
                     break
 
                 print("Le mannequin d'entraînement riposte !")
-                degats_mannequin = random.randint(6, 30)  # Dégâts aléatoires du mannequin
+                degats_mannequin = random.randint(6, 20)  # Dégâts aléatoires du mannequin
                 player_pv -= degats_mannequin
                 if player_pv < 0:
                     player_pv = 0  # Si la vie du joueur est négative, la fixer à zéro
