@@ -45,7 +45,7 @@ argent = 10000  # Argent du joueur pour manger à la cafeteria
 
 objets_cles = []
 objets_badge = []
-inventaire = {}
+inventaire = []
 
 # ********************************************************************************
 # FONCTIONS UTILITAIRES
