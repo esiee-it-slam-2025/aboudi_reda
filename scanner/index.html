@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scanner de billet - Steward</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-start p-6">
+
+  <h1 class="text-2xl md:text-3xl font-bold text-blue-800 mb-6 text-center">🎫 Scanner un billet</h1>
+
+  <!-- Zone de scan -->
+  <div id="reader" class="w-full max-w-sm mx-auto border border-gray-300 bg-white rounded shadow-md p-2"></div>
+
+  <!-- Résultat du scan -->
+  <div id="result" class="mt-6 w-full max-w-sm"></div>
+
+  <script src="index.js"></script>
+</body>
+</html>
