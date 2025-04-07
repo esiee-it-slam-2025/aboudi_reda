@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f9f9f9;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 24px;
+    color: #1f2937;
+    margin-bottom: 20px;
+  }
+  
+  #reader {
+    width: 300px;
+    margin: auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background: white;
+  }
+  
+  #result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  

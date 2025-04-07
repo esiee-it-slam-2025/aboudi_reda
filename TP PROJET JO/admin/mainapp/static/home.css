@@ -1,0 +1,123 @@
+/* Corps de la page */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background: #f9f9f9;
+    color: #333;
+  }
+  
+  /* Un bandeau festif en haut de page (header) */
+  header {
+    padding: 1rem;
+    text-align: center;
+    background: linear-gradient(to right, #0072CE, #FCD116, #000000, #009F3D, #DF0024);
+  }
+  
+  header h1 {
+    margin: 0;
+    color: #fff;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  }
+  
+  /* Container général */
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Titres de section */
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: #0072CE; /* bleu olympique par défaut */
+    text-transform: uppercase;
+  }
+  
+  /* Pour varier la couleur des titres h2 successifs (optionnel) */
+  h2:nth-of-type(2) {
+    color: #FCD116; /* jaune */
+  }
+  h2:nth-of-type(3) {
+    color: #000000; /* noir */
+  }
+  h2:nth-of-type(4) {
+    color: #009F3D; /* vert */
+  }
+  h2:nth-of-type(5) {
+    color: #DF0024; /* rouge */
+  }
+  
+  /* Listes */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Un petit style “bullet” coloré (optionnel) */
+  li::before {
+    content: "•";
+    color: #0072CE;
+    margin-right: 8px;
+  }
+  
+  /* Footer (optionnel) */
+  footer {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    background: #fff;
+  }
+  
+  thead {
+    background-color: #eee;
+  }
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9; /* une alternance de couleurs */
+  }
+  .btn-olympic {
+    display: inline-block;
+    background-color: #0072CE; /* bleu Olympique */
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Au survol, on change la couleur pour un effet visuel */
+  .btn-olympic:hover {
+    background-color: #005999; /* un bleu un peu plus foncé */
+  }
+  
+  /* Pour un effet “focus” (clavier) et accessibilité */
+  .btn-olympic:focus {
+    outline: 2px solid #ffcc00; /* par exemple un jaune */
+    outline-offset: 2px;
+  }
+  
+  

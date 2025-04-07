@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier l'événement</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            background-image: url('admin/Logo_JO_d\'été_-_Paris_2024.svg.png'); /* Remplacer par le chemin correct de l'image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+            text-align: center;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #0056b3;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1.1em;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .cancel-btn {
+            background-color: #dc3545;
+            margin-top: 10px;
+        }
+
+        .cancel-btn:hover {
+            background-color: #c82333;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9em;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Modifier l'événement {{ event.id }}</h1>
+        <form id="edit-event-form">
+            <label for="start">Date et heure :</label>
+            <input type="datetime-local" id="start" name="start" value="{{ event.start|date:'Y-m-d\TH:i' }}" required><br>
+
+            <label for="stadium">Stade :</label>
+            <select id="stadium" name="stadium_id" required>
+                <option value="{{ event.stadium.id }}" selected>{{ event.stadium }}</option>
+                <!-- Autres options de stades seront chargées dynamiquement -->
+            </select><br>
+
+            <label for="team_home">Équipe domicile :</label>
+            <select id="team_home" name="team_home_id">
+                <option value="{{ event.team_home.id }}" selected>{{ event.team_home }}</option>
+                <!-- Autres options d'équipes seront chargées dynamiquement -->
+            </select><br>
+
+            <label for="team_away">Équipe extérieure :</label>
+            <select id="team_away" name="team_away_id">
+                <option value="{{ event.team_away.id }}" selected>{{ event.team_away }}</option>
+                <!-- Autres options d'équipes seront chargées dynamiquement -->
+            </select><br>
+
+            <button type="submit">Enregistrer les modifications</button>
+            <button type="button" class="cancel-btn" onclick="window.location.href='/admin/dashboard/'">Annuler</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Charger les stades
+            const stadiumsResponse = await fetch('/api/stadiums/');
+            const stadiums = await stadiumsResponse.json();
+            const stadiumSelect = document.getElementById('stadium');
+            stadiums.forEach(stadium => {
+                if (stadium.id !== {{ event.stadium.id }}) {
+                    stadiumSelect.innerHTML += `<option value="${stadium.id}">${stadium.name}</option>`;
+                }
+            });
+
+            // Charger les équipes
+            const teamsResponse = await fetch('/api/teams/');
+            const teams = await teamsResponse.json();
+            const teamHomeSelect = document.getElementById('team_home');
+            const teamAwaySelect = document.getElementById('team_away');
+            teams.forEach(team => {
+                if (team.id !== {{ event.team_home.id|default:'null' }}) {
+                    teamHomeSelect.innerHTML += `<option value="${team.id}">${team.name}</option>`;
+                }
+                if (team.id !== {{ event.team_away.id|default:'null' }}) {
+                    teamAwaySelect.innerHTML += `<option value="${team.id}">${team.name}</option>`;
+                }
+            });
+
+            // Gérer la soumission du formulaire
+            document.getElementById('edit-event-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const data = Object.fromEntries(formData.entries());
+
+                try {
+                    const response = await fetch(`/api/events/{{ event.id }}/update/`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCookie('csrftoken')
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    const result = await response.json();
+                    if (result.status === 'success') {
+                        alert('Événement mis à jour avec succès');
+                        window.location.href = '/admin/dashboard/';
+                    } else {
+                        alert('Erreur lors de la mise à jour : ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Erreur:', error);
+                    alert('Une erreur est survenue lors de la mise à jour');
+                }
+            });
+        });
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.startsWith(name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+
+    <div class="footer">
+        <p>&copy; 2024 Paris 2024 | Tous droits réservés</p>
+    </div>
+</body>
+</html>

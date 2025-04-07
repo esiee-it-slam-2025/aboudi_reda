@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JO 2024 - Billetterie</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Header -->
+  <header class="bg-blue-900 text-white p-4 shadow">
+    <div class="flex items-center justify-between">
+      <h1 class="text-xl font-bold">🎟️ JO 2024 - Football</h1>
+      <div id="authButtons" class="flex gap-2">
+        <button id="loginBtn" class="bg-white text-blue-900 px-3 py-1 rounded">Connexion</button>
+        <button id="registerBtn" class="bg-white text-blue-900 px-3 py-1 rounded">Inscription</button>
+      </div>
+      <div id="userInfo" class="hidden flex items-center gap-2">
+        <span id="username" class="text-white font-semibold"></span>
+        <button id="myTicketsBtn" class="bg-green-500 px-3 py-1 rounded">🎫 Mes billets</button>
+        <button id="logoutBtn" class="bg-red-500 px-3 py-1 rounded">Déconnexion</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenu principal -->
+  <main class="p-4 max-w-4xl mx-auto">
+    <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Matchs à venir</h2>
+    <div id="matchList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Match cards ajoutées dynamiquement -->
+    </div>
+  </main>
+
+  <!-- Modal Connexion -->
+  <div id="loginModal" class="modal-overlay hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
+    <div class="bg-white p-6 rounded w-80 shadow">
+      <h2 class="text-xl font-semibold mb-4">Connexion</h2>
+      <form id="loginForm">
+        <label class="block mb-2 text-sm">Nom d'utilisateur</label>
+        <input type="text" name="username" class="w-full p-2 border border-gray-300 rounded mb-4" required />
+        <label class="block mb-2 text-sm">Mot de passe</label>
+        <input type="password" name="password" class="w-full p-2 border border-gray-300 rounded mb-4" required />
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Se connecter</button>
+        <button type="button" class="w-full mt-2 text-center text-blue-600 hover:underline closeModal">Annuler</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Inscription -->
+  <div id="registerModal" class="modal-overlay hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
+    <div class="bg-white p-6 rounded w-96 shadow">
+      <h2 class="text-xl font-semibold mb-4">Inscription</h2>
+      <form id="registerForm">
+        <label class="block mb-2 text-sm">Nom d'utilisateur</label>
+        <input type="text" name="username" class="w-full p-2 border border-gray-300 rounded mb-4" required />
+        <label class="block mb-2 text-sm">Email</label>
+        <input type="email" name="email" class="w-full p-2 border border-gray-300 rounded mb-4" required />
+        <label class="block mb-2 text-sm">Mot de passe</label>
+        <input type="password" name="password" class="w-full p-2 border border-gray-300 rounded mb-4" required />
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">S'inscrire</button>
+        <button type="button" class="w-full mt-2 text-center text-blue-600 hover:underline closeModal">Annuler</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Achat Billet -->
+  <div id="buyTicketModal" class="modal-overlay hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
+    <div class="bg-white p-6 rounded w-96 shadow">
+      <h2 class="text-xl font-semibold mb-4">Acheter un billet</h2>
+      <div id="matchInfo" class="mb-4 text-gray-700"></div>
+      <form id="buyTicketForm">
+        <input type="hidden" id="eventId" name="eventId" />
+        <label class="block mb-2 text-sm">Catégorie</label>
+        <select name="category" class="w-full p-2 border border-gray-300 rounded mb-4" required>
+          <option value="Silver">Silver - 100€</option>
+          <option value="Gold">Gold - 200€</option>
+          <option value="Platinum">Platinum - 300€</option>
+        </select>
+        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Valider</button>
+        <button type="button" class="w-full mt-2 text-center text-green-600 hover:underline closeModal">Annuler</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Billets -->
+  <div id="ticketsModal" class="modal-overlay hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
+    <div class="bg-white p-6 rounded w-full max-w-3xl max-h-[80vh] overflow-y-auto shadow">
+      <h2 class="text-xl font-semibold mb-4">🎫 Mes billets</h2>
+      <div id="ticketsList" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Tickets dynamiques -->
+      </div>
+      <button class="w-full mt-4 text-center text-blue-600 hover:underline closeModal">Fermer</button>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toast-container" class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 space-y-2 text-center"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
