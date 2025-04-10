@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Réalisation - Portfolio Reda Aboudi</title>
+  <link rel="stylesheet" href="realisation.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="entreprise.html">Entreprise</a></li>
+        <li><a href="realisation.html">Réalisation</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="#bilan">Bilan</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container">
+      <h1>Mes réalisations en entreprise</h1>
+      <p>Voici quelques projets que j’ai pu réaliser ou sur lesquels j’ai travaillé pendant mon alternance chez Best Consulting.</p>
+
+      <div class="projects-grid">
+        <div class="project" onclick="openPopupByIndex(0)">
+          <h3>Yueii - Jeu en Python</h3>
+          <a href="#">Voir le projet</a>
+        </div>
+        <div class="project" onclick="openPopupByIndex(1)">
+          <h3>JoTickets - Billetterie Olympique</h3>
+          <a href="#">Voir le projet</a>
+        </div>
+        <div class="project" onclick="openPopupByIndex(2)">
+          <h3>GestEPI - Gestion des EPI</h3>
+          <a href="#">Voir le projet</a>
+        </div>
+        <div class="project" onclick="openPopupByIndex(3)">
+          <h3>Billetterie métro Fukuoka</h3>
+          <a href="#">Voir le projet</a>
+        </div>
+        <div class="project" onclick="openPopupByIndex(4)">
+          <h3>Gestion communication client par mail</h3>
+          <a href="#">Voir le projet</a>
+        </div>
+        <div class="project" onclick="openPopupByIndex(5)">
+          <h3>Prototypage de pages web</h3>
+          <a href="#">Voir le projet</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Popup détaillé -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-content">
+      <button class="popup-close" onclick="closePopup()">&times;</button>
+      <h2 id="popup-title">Nom du projet</h2>
+
+      <div class="popup-section">
+        <h3>Description du projet</h3>
+        <p id="popup-description"></p>
+      </div>
+
+      <div class="popup-grid">
+        <div>
+          <h4>📌 Mes missions</h4>
+          <p id="popup-missions"></p>
+        </div>
+        <div>
+          <h4>⏱️ Durée</h4>
+          <p id="popup-duree"></p>
+        </div>
+        <div>
+          <h4>🛠️ Outils / Langages</h4>
+          <p id="popup-outils"></p>
+        </div>
+      </div>
+
+      <div class="popup-section">
+        <h4>🧠 Lien du projet :</h4>
+        <p id="popup-lecon"></p>
+      </div>
+
+      <div class="popup-section">
+        <h4>📂 Étapes du projet</h4>
+        <ul id="popup-etapes"></ul>
+      </div>
+
+      <div class="popup-section">
+        <h4>🎯 Compétences développées</h4>
+        <div id="popup-competences" class="competence-list"></div>
+      </div>      
+    </div>
+    </div>
+
+  <footer>
+    <p>&copy; 2024 Reda Aboudi</p>
+  </footer>
+  <div id="zoom-modal" class="zoom-modal">
+    <img id="zoomed-img" />
+  </div>
+  
+  <script src="projects.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
