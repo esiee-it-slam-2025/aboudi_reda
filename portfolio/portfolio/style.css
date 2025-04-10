@@ -1,0 +1,274 @@
+/* --- Couleurs principales --- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background-color: #002e4d;
+  color: white;
+  padding: 1em 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #40c9ff;
+}
+
+/* --- Section d'accueil animée --- */
+.hero-section {
+  background: linear-gradient(135deg, #002e4d, #00567a);
+  color: white;
+  padding: 3em 1em; /* moins haut */
+  animation: fadeIn 1.5s ease;
+}
+
+.hero-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  flex: 1;
+  text-align: left;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 180px;
+  max-width: 100%;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#welcome-message {
+  font-size: 2.5em;
+  font-family: 'Great Vibes', cursive;
+  animation: slideIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Bouton CV --- */
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #002e4d;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #004a7c;
+}
+
+/* --- Conteneur --- */
+.container {
+  max-width: 900px;
+  margin: 2em auto;
+  background: white;
+  border-radius: 10px;
+  padding: 2em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Titres & Texte --- */
+h1, h2 {
+  text-align: center;
+  color: #002e4d;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+/* --- Compétences & outils --- */
+.skills-logos {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 1.5em;
+}
+
+.skill-item {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: scale(1.1);
+}
+
+.skill-item img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.skill-item span {
+  display: block;
+  font-weight: bold;
+  color: #002e4d;
+}
+
+/* --- Footer --- */
+footer {
+  background-color: #002e4d;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+  margin-top: 2em;
+}
+
+/* --- Encadré RGPD --- */
+.legal-box {
+  background-color: #eeeeee;
+  color: #333;
+  font-size: 0.9em;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 900px;
+  text-align: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .hero-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    margin-bottom: 1em;
+    text-align: center;
+  }
+
+  .hero-image img {
+    width: 140px;
+  }
+
+  #welcome-message {
+    font-size: 1.8em;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-item img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  footer p, footer a {
+    font-size: 14px;
+  }
+}
+/* --- Formulaire de contact --- */
+.form-container {
+  width: 100%;
+  background: white;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  margin-top: 2em;
+}
+
+.form-group {
+  margin-bottom: 1.2em;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-submit-btn {
+  padding: 10px 20px;
+  background-color: #002e4d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.form-submit-btn:hover {
+  background-color: #004a7c;
+}
+

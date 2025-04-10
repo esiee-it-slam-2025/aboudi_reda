@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Reda Aboudi</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="entreprise.html">Entreprise</a></li>
+        <li><a href="realisation.html">Réalisation</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="#bilan">Bilan</a></li>
+      </ul>
+    </nav>      
+  </header>
+
+  <main>
+    <section id="home" class="hero-section">
+        <div id="welcome-container" class="hero-flex">
+          <div class="hero-text">
+            <h1 id="welcome-message" class="animated-text">Bienvenue sur mon portfolio</h1>
+          </div>
+          <div class="hero-image">
+            <img src="IMG_0871.jpg" alt="Profil" />
+          </div>
+        </div>
+      </section>      
+
+    <section id="about">
+      <h2>À propos</h2>
+      <p>Je m'appelle <strong>Reda Aboudi</strong>, étudiant en 2ème année de BTS SIO option SLAM à l'ESIEE IT de Pontoise. Je suis actuellement en alternance chez <strong>Best Consulting</strong>, où je travaille sur le développement web, le support technique et la gestion de projets.</p>
+      <p>Je suis polyvalent et touche à tout : HTML, CSS, JavaScript, gestion des tickets, relances, devis... Mon but : proposer des solutions simples, efficaces et modernes.</p>
+      <p><a href="CV_Reda_Aboudi.pdf" target="_blank" class="btn">📄 Télécharger mon CV</a></p>
+    </section>
+
+    <section id="skills">
+      <h2>Compétences</h2>
+      <div class="skills-logos">
+        <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML" /><span>HTML</span></div>
+        <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS" /><span>CSS</span></div>
+        <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript" /><span>JavaScript</span></div>
+        <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/919/919825.png" alt="NodeJS" /><span>NodeJS</span></div>
+        <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/919/919830.png" alt="PHP" /><span>PHP</span></div>
+        <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Java" /><span>Java</span></div>
+        <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python" /><span>Python</span></div>
+        <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/2772/2772128.png" alt="SQL" /><span>SQL</span></div>
+        <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/1126/1126012.png" alt="React" /><span>React</span></div>
+        <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111288.png" alt="Git" /><span>Git</span></div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <h2>Mes outils / logiciels</h2>
+      <div class="skills-logos">
+        <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/906/906324.png" alt="VS Code"><span>VS Code</span></div>
+        <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub"><span>GitHub</span></div>
+        <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/WampServer-logo.png/240px-WampServer-logo.png" alt="WampServer"><span>Wamp</span></div>
+        <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968313.png" alt="MySQL"><span>MySQL</span></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="form-container">
+        <form class="form" action="https://formspree.io/f/xrbprbqw" method="POST">
+          <div class="form-group">
+            <label for="email">Votre Email</label>
+            <input required name="email" id="email" type="email">
+          </div>
+          <div class="form-group">
+            <label for="textarea">Une remarque ?</label>
+            <textarea required cols="50" rows="10" id="textarea" name="message"></textarea>
+          </div>
+          <button type="submit" class="form-submit-btn">Envoyer</button>
+        </form>
+      </div>
+    </section>
+
+    <div class="legal-box">
+      <p>🔐 Ce site est un projet scolaire. Aucune donnée n’est conservée. J'applique les bases du RGPD et je fais attention à la sécurité des infos.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Reda Aboudi</p>
+    <a href="https://fr.linkedin.com/in/reda-aboudi-511396277" target="_blank">
+      <img src="https://get-picto.com/wp-content/uploads/2023/02/linkedin-logo-black-background.webp" alt="linkedin" style="height: 40px;">
+    </a>
+  </footer>
+
+  <script src="style.js"></script>
+</body>
+</html>
