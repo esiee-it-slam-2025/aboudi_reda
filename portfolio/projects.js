@@ -276,7 +276,7 @@ const projects = [
             🎥 Voici une démonstration vidéo du script Python en exécution :
             <br><br>
             <video controls style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-              <source src="docs/Test-testpython.mp4" type="video/mp4">
+              <source src="docs/test-testpython.mp4" type="video/mp4">
               Votre navigateur ne prend pas en charge la vidéo.
             </video>
             <br><br>
