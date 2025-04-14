@@ -143,16 +143,66 @@ const projects = [
       competences: [
         {
           titre: "Analyser les objectifs et les modalités d’organisation d’un projet",
-          contenu: "J’ai commencé par identifier toutes les zones tarifaires et conditions à intégrer avant d’écrire le code."
+          contenu: `
+            Pour ce projet, j’ai commencé par définir les besoins utilisateurs : calcul du tarif d’un trajet en métro selon les stations de départ et d’arrivée, avec ou sans tarif réduit.
+            <br><br>
+            J’ai rédigé un mini cahier des charges pour identifier :
+            <ul>
+              <li>les zones (A, B, C)</li>
+              <li>les règles tarifaires simples</li>
+              <li>les réductions à appliquer</li>
+            </ul>
+        
+            <br><strong>🎯 Objectif :</strong> permettre un calcul rapide, juste, et simple à lire pour l’utilisateur final.
+        
+            <br><br><strong>🗺️ Carte utilisée :</strong>
+            <div class="image-grid">
+              <img src="docs/fukuokamap.png" alt="Plan métro Fukuoka" class="zoom-img" />
+            </div>
+        
+            <br><br>j’ai rédigé un cahier des charges regroupant les règles tarifaires, les zones.
+            <div style="text-align: center;">
+              <button class="readme-btn" onclick="openChargeFukuoka()">📄 Voir le cahier des charges</button>
+            </div>
+          `
         },
         {
           titre: "Planifier les activités",
-          contenu: "Fonctions codées les unes après les autres pour garantir que chaque calcul marche avant d’aller plus loin."
+          contenu: `
+            J’ai organisé le projet en plusieurs tâches via Trello : rédaction du cahier des charges, gestion des cas utilisateurs, codage, et tests.
+            <br><br>
+            Chaque carte correspond à une action concrète à faire ou déjà réalisée, répartie dans des colonnes "À faire", "En cours", "Bloqué" ou "Terminé".
+            <br><br>
+            Cela m’a permis de garder une vue d’ensemble claire sur l’avancement et de prioriser les étapes importantes.
+            <br><br>
+            <div style="text-align: center;">
+              <img src="docs/trellofukuoka.png" alt="Trello Fukuoka" class="zoom-img" style="max-width:90%; border-radius:8px; border:1px solid #ccc; cursor: zoom-in;">
+            </div>
+          `
         },
         {
           titre: "Gérer son identité professionnelle",
-          contenu: "Projet réalisé seul en respectant une consigne réaliste, fidèle à une vraie demande d'entreprise."
-        }
+          contenu: `
+            Ce projet m’a permis de mener un test utilisateur simple pour valider la logique du code. 
+            <br><br>
+            🎥 Voici une démonstration vidéo du script Python en exécution :
+            <br><br>
+            <video controls style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+              <source src="docs/Test-testpython.mp4" type="video/mp4">
+              Votre navigateur ne prend pas en charge la vidéo.
+            </video>
+            <br><br>
+            Cette vidéo montre les différentes étapes du script : choix des billets, stations, calculs automatiques et affichage final.
+            <br><br>
+            ✅ Cette démarche m’a permis de :
+            <ul>
+              <li>🧠 Vérifier concrètement le bon fonctionnement du projet</li>
+              <li>💬 Expliquer mon code à l’oral, comme en entreprise</li>
+              <li>👤 Valoriser mon travail en le documentant clairement</li>
+            </ul>
+            <br>
+            C’est une façon concrète de montrer mon autonomie, mon sérieux, et ma capacité à tester et présenter un projet proprement.
+          `}
       ]
     },
     {
