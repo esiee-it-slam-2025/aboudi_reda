@@ -4,7 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Réalisation - Portfolio Reda Aboudi</title>
+
+  <!-- Styles -->
   <link rel="stylesheet" href="realisation.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+
+  <!-- Prism pour coloration syntaxique -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js" defer></script>
 </head>
 <body>
   <header>
@@ -14,7 +21,8 @@
         <li><a href="entreprise.html">Entreprise</a></li>
         <li><a href="realisation.html">Réalisation</a></li>
         <li><a href="veille.html">Veille</a></li>
-        <li><a href="#bilan">Bilan</a></li>
+        <li><a href="bilan.html">Bilan</a></li>
+        <li><a href="MentionLegal.html">Mentions légales</a></li>
       </ul>
     </nav>
   </header>
@@ -94,15 +102,33 @@
         <div id="popup-competences" class="competence-list"></div>
       </div>      
     </div>
-    </div>
+  </div>
 
   <footer>
     <p>&copy; 2024 Reda Aboudi</p>
   </footer>
+
+  <!-- Zoom modal -->
   <div id="zoom-modal" class="zoom-modal">
     <img id="zoomed-img" />
   </div>
-  
+<!-- README Popup -->
+<div class="popup-overlay" id="readme-popup">
+  <div class="popup-content readme-popup-content">
+    <button class="popup-close" onclick="closeReadmePopup()">&times;</button>
+    <h2>README – Projet GestEPI</h2>
+    <iframe src="docs/EPIaide.md" width="100%" height="500px" style="border: 1px solid #ccc; border-radius: 8px;"></iframe>
+  </div>
+</div>
+<!-- Popup Cahier des charges Fukuoka -->
+<div class="popup-overlay" id="charge-fukuoka-popup">
+  <div class="popup-content readme-popup-content">
+    <button class="popup-close" onclick="closeChargeFukuoka()">&times;</button>
+    <h2>Cahier des charges – Fukuoka</h2>
+    <iframe src="docs/fukuokacharge.md" width="100%" height="500px" style="border: 1px solid #ccc; border-radius: 8px;"></iframe>
+  </div>
+</div>
+  <!-- Scripts -->
   <script src="projects.js"></script>
   <script src="popup.js"></script>
 </body>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bilan de mes 2 ans de BTS SIO</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="bilan.css" />
+</head>
+<body>
+  <div class="site-wrapper">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="entreprise.html">Entreprise</a></li>
+          <li><a href="realisation.html">Réalisation</a></li>
+          <li><a href="veille.html">Veille</a></li>
+          <li><a href="MentionLegal.html">Mentions légales</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="bilan-container">
+      <h1>Bilan de mes 2 ans de BTS SIO</h1>
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="terminal-title">RED'S SHOWTIME.exe</span>
+        </div>
+        <div class="terminal-buttons">
+            <button onclick="showBilan('debut')">💬 Début de formation</button>
+          <button onclick="showBilan('appris')">📘 Ce que j’ai appris</button>
+          <button onclick="showBilan('aime')">❤️ Ce que j’ai aimé</button>
+          <button onclick="showBilan('retiens')">🧠 Ce que je retiens</button>
+          <button onclick="showBilan('apres')">🤔 Et après ?</button>
+        </div>
+        <div class="terminal-body" id="bilan-output">
+          <p class="cursor">Clique sur un bouton pour afficher le bilan...</p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Reda Aboudi – Portfolio personnel</p>
+    </footer>
+  </div>
+
+  <script src="bilan.js"></script>
+</body>
+</html>

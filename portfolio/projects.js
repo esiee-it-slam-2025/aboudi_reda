@@ -1,3 +1,4 @@
+/* test */
 const projects = [
     {
       title: "Yueii - Jeu en Python",
@@ -22,9 +23,7 @@ const projects = [
               <br><br>
               <button onclick="togglePdf(this)">📄 Voir le cahier des charges</button>
               <div class="pdf-wrapper" style="display:none; margin-top: 10px;">
-                <iframe src="docs/cahier-des-charges-yueii.pdf" width="100%" height="300px" style="border: 1px solid #ccc; border-radius: 8px;"></iframe>
-                <br>
-                <a href="docs/cahier-des-charges-yueii.pdf" target="_blank" class="pdf-btn">🔗 Ouvrir dans un nouvel onglet</a>
+                <iframe src="docs/Cahier-des-charges-Yueii.pdf" width="100%" height="300px" style="border: 1px solid #ccc; border-radius: 8px;"></iframe>
               </div>
             `
           },                   
@@ -47,8 +46,7 @@ const projects = [
               <video controls style="width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
                 <source src="docs/yueiivideo.mp4" type="video/mp4">
               </video>
-            `
-          }                   
+            `}                   
       ]
     },
     {
@@ -59,8 +57,12 @@ const projects = [
         "Connexion API, gestion base de données, création des vues Django, implémentation de QR codes, sécurisation des accès.",
       duree: "3 mois",
       outils: "Django, Python, HTML, JS, QR Scanner, VS Code",
-      lecon:
-        "Compréhension des API REST, gestion de projet fullstack, sécurisation d’applications.",
+      lecon:`
+      <a href="https://github.com/esiee-it-slam-2025/aboudi_reda/tree/348769cf31007bc0bf9964b883afd64626b31904/TP%20PROJET%20JO" 
+         target="_blank" 
+         style="color: #0066cc; text-decoration: underline;">
+        🔗 Voir le code du projet sur GitHub
+      </a>`,
       etapes: ["Développement de l'API", "Création des interfaces front", "Déploiement et test"],
       competences: [
         {
@@ -97,10 +99,20 @@ const projects = [
               </div>
             `
           },          
-        {
-          titre: "Planifier les activités",
-          contenu: "Organisation du travail en plusieurs modules : interface d’admin, API, puis front-end en mobile et scan."
-        }
+          {
+            titre: "Planifier les activités",
+            contenu: `
+              Pour mener à bien le développement de JoTickets, j’ai découpé le projet en plusieurs modules :
+              interface d’administration, API, interface d’achat de billets, et scan de QR code.
+          
+              <br><br>
+              J’ai utilisé Trello pour organiser les tâches à réaliser, suivre leur avancement et les prioriser.
+              Cela m’a permis de mieux répartir les étapes dans le temps, de visualiser mes objectifs, et de résoudre les blocages au fur et à mesure.
+              
+              <br><br>
+              <img src="docs/planning-jotickets.jpg" alt="Trello JO" class="zoom-img trello-jotickets-img" style="max-width:100%; border-radius:8px; border:1px solid #ccc; cursor: zoom-in;">
+            `
+          }
       ]
     },
     {
@@ -109,23 +121,99 @@ const projects = [
         "Application de suivi des équipements de sécurité (EPI) pour cordistes : ajout, contrôles, alertes de maintenance, détails et historique.",
       missions:
         "Développement back-end Express/TS, front React/MUI, structuration des interfaces types, alerte de maintenance.",
-      duree: "1 mois",
+      duree: "3 mois",
       outils: "React, TypeScript, Express, MariaDB, VS Code",
-      lecon:
-        "Renforcement en structuration d'app fullstack, typage et réutilisation de composants.",
+      lecon:`
+      <a href="https://github.com/Reda951/GestEPI.git" 
+         target="_blank" 
+         style="color: #0066cc; text-decoration: underline;">
+        🔗 Voir le code du projet sur GitHub
+      </a>`,
       etapes: ["Architecture du projet", "Développement Front/Back", "Mise en place des alertes"],
       competences: [
         {
           titre: "Recenser et identifier les ressources numériques",
-          contenu: "Analyse des EPI, types, états et périodicité de contrôle pour adapter les modèles de données."
-        },
+          contenu: `
+            <p style="margin-bottom: 16px;">
+              🔍 Pour répondre à cette compétence, j’ai modélisé les ressources clés de l’application (EPI, Contrôle, Utilisateur) avec Sequelize.
+            </p>
+        
+            <div class="code-exp-grid">
+              <div class="code-block">
+                <pre><code class="language-javascript">
+        const EPI = sequelize.define('EPI', {
+          id: { type: DataTypes.UUID, primaryKey: true },
+          numeroSerie: DataTypes.STRING,
+          type: DataTypes.ENUM('TEXTILE', 'METAL'),
+          statut: DataTypes.ENUM('OPERATIONNEL', 'REPARATION', 'REBUT'),
+          dateAchat: DataTypes.DATEONLY,
+          periodiciteControle: DataTypes.INTEGER
+        });
+                </code></pre>
+              </div>
+              <div class="explication">
+                🧩 <strong>Modèle EPI :</strong> Ce modèle décrit les équipements à suivre : numéro de série, type (textile ou métal), statut, dates clés et fréquence de contrôle.
+              </div>
+            </div>
+        
+            <div class="code-exp-grid">
+              <div class="code-block">
+                <pre><code class="language-javascript">
+        const ControleModel = sequelize.define('Controle', {
+          id: { type: DataTypes.STRING, primaryKey: true },
+          date: DataTypes.STRING,
+          gestionnaire: DataTypes.STRING,
+          statut: DataTypes.STRING,
+          remarques: DataTypes.STRING,
+        });
+        ControleModel.belongsTo(EPIModel, { foreignKey: 'epiId' });
+                </code></pre>
+              </div>
+              <div class="explication">
+                🧩 <strong>Modèle Contrôle :</strong> Chaque contrôle est lié à un EPI et stocke les infos : date, statut, remarques, gestionnaire.
+              </div>
+            </div>
+        
+            <div class="code-exp-grid">
+              <div class="code-block">
+                <pre><code class="language-javascript">
+        const User = sequelize.define('User', {
+          id: { type: DataTypes.UUID, primaryKey: true },
+          nom: DataTypes.STRING,
+          email: DataTypes.STRING,
+          role: DataTypes.ENUM('admin', 'gestionnaire')
+        });
+                </code></pre>
+              </div>
+              <div class="explication">
+                🧩 <strong>Modèle Utilisateur :</strong> Gère les rôles d’utilisateur (admin/gestionnaire) et permet d’associer les actions à un utilisateur identifié.
+              </div>
+            </div>
+          `
+        },                                   
         {
           titre: "Planifier les activités",
-          contenu: "Découpage en lots : BDD et API, puis front et alertes."
+          contenu: `
+            J’ai découpé mon travail en plusieurs lots : création de la base de données, développement de l’API, puis développement du front avec alertes. Cette organisation m’a permis d’avoir une vue claire du projet à chaque étape.
+            
+            <br><br>
+            📦 <strong>Architecture de l’application GestEPI :</strong>
+            <br><br>
+            <img src="docs/ArchitectureGestEPI.png" alt="Architecture application GestEPI" class="zoom-img" style="max-width:100%; border-radius:8px; border:1px solid #ccc;">
+        
+            <br><br>
+            📋 <strong>Suivi des tâches avec Trello :</strong>
+            <br><br>
+            <img src="docs/trellogestepi.png" alt="Trello GestEPI" class="zoom-img" style="max-width:100%; border-radius:8px; border:1px solid #ccc;">
+          `
         },
         {
           titre: "Développer son projet professionnel",
-          contenu: "Projet complexe en autonomie sur la durée, m’ayant permis de monter en compétences sur le développement React/TS."
+          contenu: `
+            Ce projet m’a permis de travailler en autonomie complète sur la durée, en allant du back-end à l’interface React. J’ai documenté mes choix, mon organisation et mes apprentissages dans un fichier personnel que voici :
+            <br><br>
+            <button class="readme-btn" onclick="openReadmePopup()">📄 Lire le README personnel</button>
+          `
         }
       ]
     },
@@ -202,7 +290,8 @@ const projects = [
             </ul>
             <br>
             C’est une façon concrète de montrer mon autonomie, mon sérieux, et ma capacité à tester et présenter un projet proprement.
-          `}
+          `
+        }
       ]
     },
     {

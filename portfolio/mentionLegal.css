@@ -1,0 +1,65 @@
+/* Base cohérente avec les autres pages */
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f4f4f4;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+  }
+  
+  .legal-container {
+    max-width: 1000px;
+    margin: 3em auto;
+    background: white;
+    padding: 2.5em;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.06);
+    font-size: 1rem;
+  }
+  
+  .legal-container h1,
+  .legal-container h2 {
+    color: #002e4d;
+    font-family: 'Georgia', serif;
+    margin-bottom: 1em;
+  }
+  
+  .legal-container h1 {
+    font-size: 2.3em;
+    text-align: center;
+    border-bottom: 2px solid #002e4d;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+  }
+  
+  .legal-container h2 {
+    font-size: 1.4em;
+    margin-top: 2em;
+  }
+  
+  .legal-container p {
+    margin: 0.7em 0;
+    text-align: justify;
+  }
+  
+  /* Encarts juridiques */
+  .legal-article {
+    background-color: #f1f8ff;
+    border-left: 4px solid #007acc;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.95em;
+    margin: 15px 0;
+    color: #1a1a1a;
+  }
+  
+  /* Crédit en bas plus discret */
+  .legal-credits {
+    font-size: 0.85em;
+    text-align: center;
+    margin-top: 60px;
+    color: #666;
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+  }

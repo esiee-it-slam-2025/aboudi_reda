@@ -55,6 +55,8 @@ function openPopupByIndex(index) {
       container.appendChild(content);
       competencesContainer.appendChild(container);
     });
+    popup.style.display = "flex";
+    Prism.highlightAll(); // ✅ colorisation syntaxique
   }
 
   popup.style.display = "flex";
@@ -92,6 +94,8 @@ const zoomedImg = document.getElementById("zoomed-img");
 
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("zoom-img")) {
+    e.preventDefault(); // Empêche comportement par défaut
+    e.stopPropagation(); // Empêche d'autres handlers
     zoomedImg.src = e.target.src;
     zoomModal.style.display = "flex";
   } else if (e.target === zoomModal) {
@@ -99,4 +103,31 @@ document.addEventListener("click", function (e) {
   }
 });
 
-  
+function openReadmePopup() {
+  document.getElementById("readme-popup").style.display = "flex";
+}
+
+function closeReadmePopup() {
+  document.getElementById("readme-popup").style.display = "none";
+}
+
+window.addEventListener("click", function (e) {
+  const readmePopup = document.getElementById("readme-popup");
+  if (e.target === readmePopup) {
+    closeReadmePopup();
+  }
+});
+function openChargeFukuoka() {
+  document.getElementById("charge-fukuoka-popup").style.display = "flex";
+}
+
+function closeChargeFukuoka() {
+  document.getElementById("charge-fukuoka-popup").style.display = "none";
+}
+
+window.addEventListener("click", function (e) {
+  const popupFukuoka = document.getElementById("charge-fukuoka-popup");
+  if (e.target === popupFukuoka) {
+    closeChargeFukuoka();
+  }
+});
